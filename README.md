@@ -3,9 +3,9 @@
 ## Tutorial
 
 ## Stack
-- [Three.js](https://threejs.org/) - React
-- [Three.js](https://threejs.org/) - Typescript
-- [Three.js](https://threejs.org/) - OpenAi API
+- [Three.js](https://es.react.dev/) - React
+- [Typescript](https://www.typescriptlang.org/) - Typescript
+- [OpenAI](https://openai.com/) - ChatGPT OpenAI API
 
 ## Project structure
 
