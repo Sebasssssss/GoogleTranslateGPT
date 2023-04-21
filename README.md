@@ -3,7 +3,7 @@
 ## Tutorial
 
 ## Stack
-- [Three.js](https://es.react.dev/) - React
+- [React](https://es.react.dev/) - React
 - [Typescript](https://www.typescriptlang.org/) - Typescript
 - [OpenAI](https://openai.com/) - ChatGPT OpenAI API
 
