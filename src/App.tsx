@@ -1,28 +1,60 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
-import { useStore } from './hooks/useStore'
-import { Container, Row, Col, Button, Form, Stack } from 'react-bootstrap'
-import { AUTO_LANGUAGE } from './constants'
-import IoSwitch from './components/icons'
+import { useEffect } from 'react'
+import { useDebounce } from './hooks/useDebounce'
+import { Container, Row, Col, Button, Stack } from 'react-bootstrap'
+import { IoCopy, IoSpeaker, IoSwitch } from './components/icons'
 import { LanguageSelector } from './components/LanguageSelector'
-import { SectionType } from './types.d'
 import { TextArea } from './components/TextArea'
+import { AUTO_LANGUAGE, VOICE_FOR_LANGUAGE } from './constants'
+import { useStore } from './hooks/useStore'
+import { translate } from './services/translate'
+import { SectionType } from './types.d'
+import './App.css'
 
 function App() {
   const {
-    fromText,
-    result,
+    loading,
     fromLanguage,
     toLanguage,
+    fromText,
+    result,
     interchangeLanguages,
     setFromLanguage,
     setToLanguage,
     setFromText,
     setResult
   } = useStore()
+
+  const debouncedFromText = useDebounce(fromText, 300)
+
+  useEffect(() => {
+    if (debouncedFromText === '') return
+
+    translate({ fromLanguage, toLanguage, text: debouncedFromText })
+      .then(result => {
+        if (result == null) return
+        setResult(result)
+      })
+      .catch(() => {
+        setResult('Error')
+      })
+  }, [debouncedFromText, fromLanguage, toLanguage])
+
+  const handleClipboard = () => {
+    navigator.clipboard.writeText(result).catch(() => {})
+  }
+
+  const handleSpeak = () => {
+    const utterance = new SpeechSynthesisUtterance(result)
+    utterance.lang = VOICE_FOR_LANGUAGE[toLanguage]
+    utterance.rate = 0.9
+    speechSynthesis.speak(utterance)
+  }
+
   return (
     <Container fluid>
       <h2>Google Translate</h2>
+
       <Row>
         <Col>
           <Stack gap={2}>
@@ -31,13 +63,15 @@ function App() {
               value={fromLanguage}
               onChange={setFromLanguage}
             />
+
             <TextArea
-              value={fromText}
               type={SectionType.From}
+              value={fromText}
               onChange={setFromText}
             />
           </Stack>
         </Col>
+
         <Col xs="auto">
           <Button
             variant="link"
@@ -47,6 +81,7 @@ function App() {
             <IoSwitch />
           </Button>
         </Col>
+
         <Col>
           <Stack gap={2}>
             <LanguageSelector
@@ -54,11 +89,29 @@ function App() {
               value={toLanguage}
               onChange={setToLanguage}
             />
-            <TextArea
-              value={result}
-              type={SectionType.To}
-              onChange={setResult}
-            />
+            <div style={{ position: 'relative' }}>
+              <TextArea
+                loading={loading}
+                type={SectionType.To}
+                value={result}
+                onChange={setResult}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  bottom: 0,
+                  display: 'flex'
+                }}
+              >
+                <Button variant="link" onClick={handleClipboard}>
+                  <IoCopy />
+                </Button>
+                <Button variant="link" onClick={handleSpeak}>
+                  <IoSpeaker />
+                </Button>
+              </div>
+            </div>
           </Stack>
         </Col>
       </Row>
