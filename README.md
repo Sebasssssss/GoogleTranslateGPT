@@ -2,8 +2,6 @@
 
 This is a translation application built with OpenAI's API, TypeScript, and React. It allows users to translate text from one language to another in real-time.
 
-## Image
-
 ![Screenshot 2023-04-22 121128](https://user-images.githubusercontent.com/105828786/233792580-897523f3-5ac6-41f8-b502-778673f2be6b.png)
 
 ## Features
