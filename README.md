@@ -35,6 +35,10 @@ This application was built using the following technologies:
 
 This application uses the OpenAI API to translate text.
 
+## Credits
+
+This project was inspired by the tutorial series by [midudev](https://github.com/midudev) on YouTube.
+
 ## License
 
 Mit License.
