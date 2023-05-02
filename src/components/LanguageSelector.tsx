@@ -24,6 +24,7 @@ export const LanguageSelector = ({ onChange, type, value }: Props) => {
       aria-label="Select a language"
       onChange={handleChange}
       value={value}
+      className="text-[#8ab4f8] bg-transparent border-zinc-600 text-[14px]"
     >
       {type === SectionType.From && (
         <option value={AUTO_LANGUAGE}>Detect language</option>

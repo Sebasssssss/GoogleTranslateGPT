@@ -9,7 +9,13 @@ interface Props {
   value: string
 }
 
-const commonStyles = { border: 0, height: '200px', resize: 'none' }
+const commonStyles = {
+  border: 0,
+  height: '200px',
+  resize: 'none',
+  backgroundColor: 'transparent',
+  color: '#fafafa'
+}
 
 const getPlaceholder = ({
   type,
@@ -27,7 +33,7 @@ export const TextArea = ({ type, loading, value, onChange }: Props) => {
   const styles =
     type === SectionType.From
       ? commonStyles
-      : { ...commonStyles, backgroundColor: '#f5f5f5' }
+      : { ...commonStyles, backgroundColor: '#303134' }
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.target.value)
