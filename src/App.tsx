@@ -100,7 +100,7 @@ function App() {
                   value={result}
                   onChange={setResult}
                 />
-                <div className="absolute left-0 bottom-0 flex text-[#fafafa]">
+                <div className="absolute left-0 bottom-0 flex">
                   <Button variant="link" onClick={handleClipboard}>
                     <IoCopy />
                   </Button>
