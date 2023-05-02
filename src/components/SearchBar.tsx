@@ -26,7 +26,8 @@ export default function SearchBar() {
         <input className="w-full rounded-full py-2 my-4 hover:shadow-lg" />
       </Stack>
 
-      <div className="text-sm font-medium text-center border-b border-gray-700 mb-4 w-full inline-flex items-center justify-between">
+      <div className="text-sm relative font-medium text-center border-b border-gray-700 mb-4 w-full inline-flex items-center justify-between">
+        <div className="border-b border-gray-700 absolute bottom-0 -left-[320px] w-screen"></div>
         <ul className="flex flex-wrap -mb-px">
           <li className="mr-2 inline-flex items-center gap-1 p-2 text-[#8ab4f8] border-b-2 cursor-pointer active border-[#8ab4f8]">
             <IoSearchRainbow /> Todos
