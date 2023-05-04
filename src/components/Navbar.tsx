@@ -1,4 +1,5 @@
 import { IoConfig, IoMenu } from './icons'
+import Avvvatars from 'avvvatars-react'
 
 export default function Navbar() {
   return (
@@ -10,10 +11,7 @@ export default function Navbar() {
         <div className="rounded-full hover:bg-zinc-300/20 p-2 cursor-pointer">
           <IoMenu />
         </div>
-        <img
-          className="rounded-full hover:bg-zinc-300/20 p-1 cursor-pointer"
-          src="https://lh3.googleusercontent.com/ogw/AOLn63HO3yMbKWrNK7lTj58xCZOi4APJhVMALCbPNFpP=s32-c-mo"
-        />
+        <Avvvatars value="Sebass" />
       </div>
     </header>
   )
