@@ -31,10 +31,6 @@ This application was built using the following technologies:
 - [React](https://reactjs.org/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-## APIs
-
-This application uses the OpenAI API to translate text.
-
 ## Credits
 
 This project was inspired by the tutorial series by [midudev](https://github.com/midudev) on YouTube.
